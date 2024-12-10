@@ -1,0 +1,8 @@
+# Common dependencies for both producer and consumer
+
+psycopg2-binary  # PostgreSQL adapter for Python
+pika             # RabbitMQ client library for Python
+requests         # Optional: If you make HTTP requests
+# Add any other dependencies you might need
+
+

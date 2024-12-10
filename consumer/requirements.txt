@@ -1,0 +1,11 @@
+# requirements.txt
+
+# PostgreSQL adapter for Python
+psycopg2-binary
+
+# Other dependencies (add any other packages you need)
+# Example:
+# requests
+ flask
+ pandas
+

@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  producer:
+    build:
+      context: ./
+      dockerfile: Dockerfile_p
+    ports:
+      - "4321:4321"  # Map host port 4321 to container port 4321
+    depends_on:
+      - rabbitmq
+      - db
+
+  consumer:
+    build:
+      context: ./
+      dockerfile: Dockerfile_c
+    depends_on:
+      - rabbitmq
+      - db
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: "rabbitmq:3-management"
+    ports:
+      - "15672:15672"  # Management UI
+      - "5672:5672"    # RabbitMQ server
+
+  db:
+    container_name: postgres
+    image: "postgres:latest"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: my_database
+
